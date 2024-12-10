@@ -8,4 +8,13 @@
 #include <gtest/gtest.h>
 #include "../Manager.h"
 
+class ManagerTests : public testing::Test {
+    protected:
+        ClassProject::Manager man;
+};
+
+TEST_F(ManagerTests, testTrue) {
+    EXPECT_EQ(man.True(),1);
+};
+
 #endif
