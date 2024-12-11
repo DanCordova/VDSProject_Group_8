@@ -17,4 +17,8 @@ TEST_F(ManagerTests, testTrue) {
     EXPECT_EQ(man.True(),1);
 };
 
+TEST_F(ManagerTests, testFalse) {
+    EXPECT_EQ(man.False(),0);
+};
+
 #endif
