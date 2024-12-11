@@ -11,6 +11,8 @@
 class ManagerTests : public testing::Test {
     protected:
         ClassProject::Manager man;
+        ClassProject::BDD_ID falseID = man.False();
+        ClassProject::BDD_ID trueID = man.True();
 };
 
 TEST_F(ManagerTests, testTrue) {
@@ -31,16 +33,31 @@ TEST_F(ManagerTests, testCreateVar) {
 };
 
 TEST_F(ManagerTests, testIsConstant) {
-    EXPECT_EQ(man.isConstant(0),1);
-    EXPECT_EQ(man.isConstant(1),1);
-    man.createVar("a");
-    EXPECT_EQ(man.isConstant(0),1);
-    EXPECT_EQ(man.isConstant(1),1);
-    EXPECT_EQ(man.isConstant(2),0);
-    man.createVar("b");
-    EXPECT_EQ(man.isConstant(0),1);
-    EXPECT_EQ(man.isConstant(1),1);
-    EXPECT_EQ(man.isConstant(2),0);
+    EXPECT_EQ(man.isConstant(falseID),true);
+    EXPECT_EQ(man.isConstant(trueID),true);
+    ClassProject::BDD_ID aID = man.createVar("a");
+    EXPECT_EQ(man.isConstant(falseID),true);
+    EXPECT_EQ(man.isConstant(trueID),true);
+    EXPECT_EQ(man.isConstant(aID),false);
+    ClassProject::BDD_ID bID = man.createVar("b");
+    EXPECT_EQ(man.isConstant(falseID),true);
+    EXPECT_EQ(man.isConstant(trueID),true);
+    EXPECT_EQ(man.isConstant(aID),false);
+    EXPECT_EQ(man.isConstant(bID),false);
 };
+
+TEST_F(ManagerTests, testIsVariable) {
+    EXPECT_EQ(man.isVariable(falseID),false);
+    EXPECT_EQ(man.isVariable(trueID),false);
+    ClassProject::BDD_ID aID = man.createVar("a");
+    EXPECT_EQ(man.isVariable(falseID),false);
+    EXPECT_EQ(man.isVariable(trueID),false);
+    EXPECT_EQ(man.isVariable(aID),true);
+    ClassProject::BDD_ID bID = man.createVar("b");
+    EXPECT_EQ(man.isVariable(falseID),false);
+    EXPECT_EQ(man.isVariable(trueID),false);
+    EXPECT_EQ(man.isVariable(aID),true);
+    EXPECT_EQ(man.isVariable(bID),true);
+}
 
 #endif
