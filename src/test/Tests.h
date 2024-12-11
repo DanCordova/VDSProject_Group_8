@@ -44,6 +44,8 @@ TEST_F(ManagerTests, testIsConstant) {
     EXPECT_EQ(man.isConstant(trueID),true);
     EXPECT_EQ(man.isConstant(aID),false);
     EXPECT_EQ(man.isConstant(bID),false);
+
+    EXPECT_EQ(man.isConstant(bID + 1),false);
 };
 
 TEST_F(ManagerTests, testIsVariable) {
@@ -58,6 +60,8 @@ TEST_F(ManagerTests, testIsVariable) {
     EXPECT_EQ(man.isVariable(trueID),false);
     EXPECT_EQ(man.isVariable(aID),true);
     EXPECT_EQ(man.isVariable(bID),true);
+
+    EXPECT_EQ(man.isVariable(bID + 1),false);
 }
 
 #endif
