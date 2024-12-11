@@ -15,4 +15,13 @@ namespace ClassProject{
     bool Manager::isConstant(BDD_ID f){
         return (f == 0 || f == 1);
     }
+    bool Manager::isVariable(BDD_ID f){
+        if (f == 0 || f == 1)
+            return false;
+        for (auto it = varID.begin(); it != varID.end(); it++) {
+            if (it->second == f)
+                return true;
+        }
+        return false;
+    }
 }
