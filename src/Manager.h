@@ -6,14 +6,17 @@
 #define VDSPROJECT_MANAGER_H
 
 #include "ManagerInterface.h"
+#include <unordered_map>
 
 namespace ClassProject {
     class Manager : public ManagerInterface {
         private:
             const BDD_ID tru = 1;
             const BDD_ID fls = 0;
+            BDD_ID lastID = 1;
+            std::unordered_map<std::string, BDD_ID> varID;
         public:
-            BDD_ID createVar(const std::string &label) override {return 0;};
+            BDD_ID createVar(const std::string &label) override;
             const BDD_ID &True() override;
             const BDD_ID &False() override;
             bool isConstant(BDD_ID f) override {return 0;};
