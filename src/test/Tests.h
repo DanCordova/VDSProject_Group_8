@@ -21,4 +21,13 @@ TEST_F(ManagerTests, testFalse) {
     EXPECT_EQ(man.False(),0);
 };
 
+TEST_F(ManagerTests, testCreateVar) {
+    EXPECT_EQ(man.createVar("a"),2);
+    EXPECT_EQ(man.createVar("a"),2);
+    EXPECT_EQ(man.createVar("b"),3);
+    EXPECT_EQ(man.createVar("c"),4);
+    EXPECT_EQ(man.createVar("b"),3);
+    EXPECT_EQ(man.createVar("a"),2);
+};
+
 #endif
