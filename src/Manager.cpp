@@ -12,4 +12,7 @@ namespace ClassProject{
             return varID[label];
         return varID[label] = ++lastID;
     }
+    bool Manager::isConstant(BDD_ID f){
+        return (f == 0 || f == 1);
+    }
 }
