@@ -15,7 +15,7 @@ namespace ClassProject {
         public:
             BDD_ID createVar(const std::string &label) override {return 0;};
             const BDD_ID &True() override;
-            const BDD_ID &False() override {return tru;};
+            const BDD_ID &False() override;
             bool isConstant(BDD_ID f) override {return 0;};
             bool isVariable(BDD_ID x) override {return 0;};
             BDD_ID topVar(BDD_ID f) override {return 0;};
