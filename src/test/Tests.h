@@ -30,4 +30,17 @@ TEST_F(ManagerTests, testCreateVar) {
     EXPECT_EQ(man.createVar("a"),2);
 };
 
+TEST_F(ManagerTests, testIsConstant) {
+    EXPECT_EQ(man.isConstant(0),1);
+    EXPECT_EQ(man.isConstant(1),1);
+    man.createVar("a");
+    EXPECT_EQ(man.isConstant(0),1);
+    EXPECT_EQ(man.isConstant(1),1);
+    EXPECT_EQ(man.isConstant(2),0);
+    man.createVar("b");
+    EXPECT_EQ(man.isConstant(0),1);
+    EXPECT_EQ(man.isConstant(1),1);
+    EXPECT_EQ(man.isConstant(2),0);
+};
+
 #endif
